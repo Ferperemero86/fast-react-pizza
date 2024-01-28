@@ -7,6 +7,8 @@ import CreateOrder from "@/features/order/CreateOrder";
 import Order from "@/features/order/Order";
 import AppLayout from "@/ui/AppLayout";
 
+import { loader as menuLoader } from "@/services/constants";
+
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
@@ -18,6 +20,7 @@ const router = createBrowserRouter([
       {
         path: "/menu",
         element: <Menu />,
+        loader: menuLoader,
       },
       {
         path: "/cart",
