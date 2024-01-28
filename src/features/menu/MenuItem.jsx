@@ -1,7 +1,6 @@
 import { formatCurrency } from "@/utils/helpers";
 
 function MenuItem({ pizza }) {
-  console.log(pizza);
   const { name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
 
   return (
