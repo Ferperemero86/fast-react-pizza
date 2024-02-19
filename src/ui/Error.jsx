@@ -1,5 +1,5 @@
 import { useRouteError } from "react-router-dom";
-import Linkbutton from "./Linkbutton";
+import LinkButton from "./LinkButton";
 
 function NotFound() {
   const error = useRouteError();
@@ -8,7 +8,7 @@ function NotFound() {
     <div>
       <h1>Something went wrong 😢</h1>
       <p>{error.data || error.message}</p>
-      <Linkbutton to="-1">&larr; Go back</Linkbutton>
+      <LinkButton to="-1">&larr; Go back</LinkButton>
     </div>
   );
 }
