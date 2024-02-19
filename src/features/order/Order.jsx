@@ -1,6 +1,6 @@
 // Test ID: IIDSAT
-
-import { useLoaderData } from "react-router-dom";
+import { useEffect } from "react";
+import { useLoaderData, useFetcher } from "react-router-dom";
 import {
   calcMinutesLeft,
   formatCurrency,
@@ -8,9 +8,19 @@ import {
 } from "../../utils/helpers";
 
 import OrderItem from "@/features/order/OrderItem";
+import UpdateOrder from "@/features/order/UpdateOrder";
 
 function Order() {
   const order = useLoaderData();
+
+  const fetcher = useFetcher();
+
+  useEffect(
+    function () {
+      if (!fetcher.data && fetcher.state === "idle") fetcher.load("/menu");
+    },
+    [fetcher],
+  );
 
   const {
     id,
@@ -53,7 +63,15 @@ function Order() {
 
       <ul className="dive-stone-200 divide-y border-b border-t">
         {cart.map((item) => (
-          <OrderItem item={item} key={item.id} />
+          <OrderItem
+            item={item}
+            key={item.name}
+            isLoadingIngredients={fetcher.state === "loading"}
+            ingredients={
+              fetcher?.data?.find((el) => el.name === item.name)?.ingredients ??
+              []
+            }
+          />
         ))}
       </ul>
 
@@ -70,6 +88,8 @@ function Order() {
           To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}
         </p>
       </div>
+
+      {!priority && <UpdateOrder order={order} />}
     </div>
   );
 }

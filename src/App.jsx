@@ -12,6 +12,7 @@ import {
   menuLoader,
   orderLoader,
   createOrderAction,
+  priorityAction,
 } from "@/services/constants";
 
 const router = createBrowserRouter([
@@ -43,6 +44,7 @@ const router = createBrowserRouter([
         element: <Order />,
         loader: orderLoader,
         errorElement: <Error />,
+        action: priorityAction,
       },
     ],
   },

@@ -13,8 +13,8 @@ export default function AppLayout() {
       {isLoading && <Loader />}
 
       <Header />
-
       <div>
+        <CartOverview />
         <main className="mx-auto max-w-3xl">
           <Outlet />
         </main>
