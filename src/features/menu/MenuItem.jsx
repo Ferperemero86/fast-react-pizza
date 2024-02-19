@@ -5,7 +5,7 @@ import { addItem, getCurrentQuantityById } from "@/features/cart/cartSlice";
 
 import Button from "@/ui/Button";
 import DeleteItem from "@/features/cart/DeleteItem";
-import UpdateItemQuantity from "../cart/updateItemQuantity";
+import UpdateItemQuantity from "@/features/cart/UpdateItemQuantity";
 
 function MenuItem({ pizza }) {
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
